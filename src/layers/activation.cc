@@ -11,6 +11,7 @@ namespace keras2cpp{
             case HardSigmoid:
             case Sigmoid:
             case Tanh:
+            case Selu:
             case SoftMax:
                 return;
             }
@@ -71,6 +72,13 @@ namespace keras2cpp{
                     return std::tanh(x);
                 });
                 break;
+            case Selu:
+               std::transform(in.begin(), in.end(), out.begin(), [](float x) {
+                  if (x < 0.f)
+                     return 1.758099326f*std::expm1(x);
+                  return 1.05070098f*x;
+                  });
+               break;
             case SoftMax: {
                 auto channels = cast(in.dims_.back());
                 kassert(channels > 1);

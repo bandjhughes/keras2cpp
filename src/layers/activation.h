@@ -12,7 +12,8 @@ namespace keras2cpp{
                 Sigmoid = 6,
                 Tanh = 7,
                 HardSigmoid = 8,
-                SoftMax = 9
+                Selu = 9,
+                SoftMax = 10
             };
             _Type type_ {Linear};
         
